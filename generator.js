@@ -3,46 +3,47 @@ let emojiList = [
         name: "傻不啦叽诗歌剧",
         id: "sblj",
         description: "©祭祭",
+        iconSrc: "./img/shabulaji/fo'xing.png",
         imgList: [
             {
                 name: "乐了",
                 id: "happy",
-                src: "./shabulaji/happy.png"
+                src: "./img/shabulaji/happy.png"
             },
             {
                 name: "大悲",
                 id: "sad",
-                src: "./shabulaji/sad.png"
+                src: "./img/shabulaji/sad.png"
             },
             {
                 name: "困",
                 id: "sleepy",
-                src: "./shabulaji/sleepy.png"
+                src: "./img/shabulaji/sleepy.png"
             },
             {
                 name: "惊",
                 id: "shocked",
-                src: "./shabulaji/shocked.png"
+                src: "./img/shabulaji/shocked.png"
             },
             {
                 name: "变傻",
                 id: "silly",
-                src: "./shabulaji/silly.png"
+                src: "./img/shabulaji/silly.png"
             },
             {
                 name: "哭哭",
                 id: "cry",
-                src: "./shabulaji/cry.png"
+                src: "./img/shabulaji/cry.png"
             },
             {
                 name: "羞",
                 id: "shy",
-                src: "./shabulaji/shy.png"
+                src: "./img/shabulaji/shy.png"
             },
             {
                 name: "佛性",
                 id: "fo'xing",
-                src: "./shabulaji/fo'xing.png"
+                src: "./img/shabulaji/fo'xing.png"
             }, 
         ],
     },
@@ -50,46 +51,47 @@ let emojiList = [
         name: "乌拉拉",
         id: "urara",
         description: "©祭祭",
+        iconSrc: "./img/urara/supported.png",
         imgList: [
             {
                 name: "忍住",
                 id: "endure",
-                src: "./urara/endure.png"
+                src: "./img/urara/endure.png"
             },
             {
                 name: "打call",
                 id: "supported",
-                src: "./urara/suppored.png"
+                src: "./img/urara/supported.png"
             },
             {
                 name: "打瞌睡",
                 id: "sleepy",
-                src: "./urara/sleepy.png"
+                src: "./img/urara/sleepy.png"
             },
             {
                 name: "哇哦",
                 id: "wow",
-                src: "./urara/wow.png"
+                src: "./img/urara/wow.png"
             },
             {
                 name: "哼哼",
                 id: "huh",
-                src: "./urara/huh.png"
+                src: "./img/urara/huh.png"
             },
             {
                 name: "乐",
                 id: "lol",
-                src: "./urara/lol.png"
+                src: "./img/urara/lol.png"
             },
             {
                 name: "切",
                 id: "so_what",
-                src: "./urara/so_what.png"
+                src: "./img/urara/so_what.png"
             },
             {
                 name: "伤心",
                 id: "sad",
-                src: "./urara/sad.png"
+                src: "./img/urara/sad.png"
             }, 
         ]
     },
@@ -97,3 +99,28 @@ let emojiList = [
 
 
 
+function generate(list){
+    let radListEle = document.getElementsByClassName("emoji-rad-list")[0];
+    let emojiEle = document.getElementsByClassName("emoji-list")[0];
+    let radListHtml = "";
+
+    for (let i = 0; i < list.length; i++) {
+        let emojiObj = list[i];
+        let emojiImgList = emojiObj.imgList;
+
+        if(i == 0) {
+            radListHtml = `<input type="radio" class="emoji-rad" id="${emojiObj.id}" name="emoji-select" checked>\n<label for="${emojiObj.id}"><img class="emoji-logo-thumb" loading="lazy" title="${emojiObj.name}" src="${emojiObj.iconSrc}"></label>`
+        } else{
+            radListHtml = radListHtml + `<input type="radio" class="emoji-rad" id="${emojiObj.id}" name="emoji-select">\n<label for="${emojiObj.id}"><img class="emoji-logo-thumb" loading="lazy" title="${emojiObj.name}" src="${emojiObj.iconSrc}"></label>`
+        }
+
+        for (let i = 0; i < emojiImgList.length; i++) {
+            let emojiImgHtml = "";
+            
+        }
+        
+    }
+
+    console.log(radListHtml);
+    radListEle.innerHTML = radListHtml;
+}
