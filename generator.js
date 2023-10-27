@@ -1,4 +1,4 @@
-let emojiList = [
+let stickers = [
     {
         name: "傻不啦叽诗歌剧",
         id: "sblj",
@@ -44,7 +44,7 @@ let emojiList = [
                 name: "佛性",
                 id: "fo'xing",
                 src: "./img/shabulaji/fo'xing.png"
-            }, 
+            },
         ],
     },
     {
@@ -92,33 +92,45 @@ let emojiList = [
                 name: "伤心",
                 id: "sad",
                 src: "./img/urara/sad.png"
-            }, 
+            },
         ]
     },
 ]
 
 
 
-function generate(list){
-    let radListEle = document.getElementsByClassName("emoji-rad-list")[0];
-    let emojiEle = document.getElementsByClassName("emoji-list")[0];
+function generate(list) {
+    let radListEle = document.getElementsByClassName("sticker-rad-list")[0];
+    let stickerListEle = document.getElementsByClassName("sticker-list")[0];
     let radListHtml = "";
 
+
     for (let i = 0; i < list.length; i++) {
-        let emojiObj = list[i];
-        let emojiImgList = emojiObj.imgList;
+        let stickerObj = list[i];
+        let stickerImgList = stickerObj.imgList;
 
-        if(i == 0) {
-            radListHtml = `<input type="radio" class="emoji-rad" id="${emojiObj.id}" name="emoji-select" checked>\n<label for="${emojiObj.id}"><img class="emoji-logo-thumb" loading="lazy" title="${emojiObj.name}" src="${emojiObj.iconSrc}"></label>`
-        } else{
-            radListHtml = radListHtml + `<input type="radio" class="emoji-rad" id="${emojiObj.id}" name="emoji-select">\n<label for="${emojiObj.id}"><img class="emoji-logo-thumb" loading="lazy" title="${emojiObj.name}" src="${emojiObj.iconSrc}"></label>`
+        if (i == 0) {
+            radListHtml = `<input type="radio" class="sticker-rad" id="${stickerObj.id}" name="sticker-select" checked>\n<label for="${stickerObj.id}"><img class="sticker-logo-thumb" loading="lazy" title="${stickerObj.name}" src="${stickerObj.iconSrc}"></label>`;
+        } else {
+            radListHtml = radListHtml + `<input type="radio" class="sticker-rad" id="${stickerObj.id}" name="sticker-select">\n<label for="${stickerObj.id}"><img class="sticker-logo-thumb" loading="lazy" title="${stickerObj.name}" src="${stickerObj.iconSrc}"></label>`;
         }
 
-        for (let i = 0; i < emojiImgList.length; i++) {
-            let emojiImgHtml = "";
-            
+
+
+
+        let l = document.createElement("div");
+        l.id = "sticker-" + stickerObj.id;
+        let stickerListHtml = "";
+
+        for (let i = 0; i < stickerImgList.length; i++) {
+            stickerListHtml = stickerListHtml + `<img class="sticker-img" title="${stickerImgList[i].name}" name="${stickerImgList[i].id}" onclick="clicksticker()" loading="lazy" src="${stickerImgList[i].src}">`
         }
-        
+
+        stickerListHtml = stickerListHtml + `<br><span class="sticker-copyright">${stickerObj.description}</span>`;
+        l.innerHTML = stickerListHtml;
+
+        stickerListEle.appendChild(l);
+
     }
 
     console.log(radListHtml);

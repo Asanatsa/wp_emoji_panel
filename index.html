@@ -12,19 +12,19 @@
 
     <style>
         /* panel基本样式及动画  */
-        .emoji-panel>img {
+        .sticker-panel>img {
             background-color: #f0f0f0;
             padding: 5px;
             outline: #e7e7e7 solid 1px;
             border-radius: 3px;
         }
 
-        .emoji-panel {
+        .sticker-panel {
             position: relative;
             display: inline-block;
         }
 
-        .emoji-panel-select {
+        .sticker-popmenu {
             height: 250px;
             width: 350px;
             background-color: #f8f8f8;
@@ -40,7 +40,7 @@
             transition: all 0.25s linear;
         }
 
-        .emoji-panel:hover .emoji-panel-select {
+        .sticker-panel:hover .sticker-popmenu {
             opacity: 1;
             visibility: visible;
             transition: all 0.25s linear;
@@ -49,7 +49,7 @@
 
 
         /* 顶部选择栏样式 */
-        .emoji-rad-list {
+        .sticker-rad-list {
             width: 100%;
             height: fit-content;
             display: flex;
@@ -62,19 +62,19 @@
             overflow-y: hidden;
         }
 
-        .emoji-rad {
+        .sticker-rad {
             appearance: none;
             /*懒的删了*/
             display: none;
         }
 
-        .emoji-rad:checked+label img {
+        .sticker-rad:checked+label img {
             background-color: #e4e4e4;
 
             transition: all 0.25s linear;
         }
 
-        .emoji-logo-thumb {
+        .sticker-logo-thumb {
             background-color: #00000000;
             height: 25px;
             width: 25px;
@@ -90,7 +90,7 @@
 
 
         /*选择区样式*/
-        .emoji-list {
+        .sticker-list {
             height: 75%;
             padding: 0 10px;
             overflow-y: auto;
@@ -99,7 +99,7 @@
         }
 
         /*表情样式*/
-        .emoji-img {
+        .sticker-img {
             height: 50px;
             width: 50px;
             padding: 5px;
@@ -109,7 +109,7 @@
             transition: all 0.25s linear;
         }
 
-        .emoji-img:hover {
+        .sticker-img:hover {
             background-color: #e4e4e4;
             transition: all 0.25s linear;
         }
@@ -117,22 +117,22 @@
 
 
         /*滚动条样式*/
-        .emoji-list::-webkit-scrollbar-button,
-        .emoji-rad-list::-webkit-scrollbar-button {
+        .sticker-list::-webkit-scrollbar-button,
+        .sticker-rad-list::-webkit-scrollbar-button {
             display: none;
         }
 
-        .emoji-list::-webkit-scrollbar {
+        .sticker-list::-webkit-scrollbar {
 
             width: 7px;
         }
 
-        .emoji-rad-list::-webkit-scrollbar {
+        .sticker-rad-list::-webkit-scrollbar {
             height: 7px;
         }
 
-        .emoji-list::-webkit-scrollbar-thumb,
-        .emoji-rad-list::-webkit-scrollbar-thumb {
+        .sticker-list::-webkit-scrollbar-thumb,
+        .sticker-rad-list::-webkit-scrollbar-thumb {
             background-color: #d4d4d4;
             border-radius: 5px;
         }
@@ -140,7 +140,7 @@
 
 
         /*版权文本样式*/
-        .emoji-copyright {
+        .sticker-copyright {
             position: relative;
             bottom: 5px;
             left: 5px;
@@ -155,10 +155,10 @@
 
 
 
-    <div class="emoji-panel"><img src="./img/shabulaji/1697889423879.png" height="30" width="30">
+    <div class="sticker-panel"><img src="./img/shabulaji/fo'xing.png" height="30" width="30">
 
         <!--选择面板-->
-        <div class="emoji-panel-select">
+        <div class="sticker-popmenu">
 
             <!--表情包选择-->
 
@@ -166,20 +166,20 @@
             <!--
                 模板
 
-                $emojiId：表情包id
+                $stickerId：表情包id
                 $title：标题
                 $thumImg：图标
 
-                <input type="radio" class="emoji-rad" id="$emojiId" name="emoji-select">
-                <label for="$emojiId"><img class="emoji-logo-thumb" loading="lazy" title="$title" src="$thumImg"></label>
+                <input type="radio" class="sticker-rad" id="$stickerId" name="sticker-select">
+                <label for="$stickerId"><img class="sticker-logo-thumb" loading="lazy" title="$title" src="$thumImg"></label>
 
             -->
-            <div class="emoji-rad-list">
-                <input type="radio" class="emoji-rad" id="test1" name="emoji-select">
-                <label for="test1"><img class="emoji-logo-thumb" loading="lazy" title="乌拉拉" src="./img/urara/celebrate.png"></label>
+            <div class="sticker-rad-list">
+                <input type="radio" class="sticker-rad" id="test1" name="sticker-select">
+                <label for="test1"><img class="sticker-logo-thumb" loading="lazy" title="乌拉拉" src="./img/urara/celebrate.png"></label>
 
-                <input type="radio" class="emoji-rad" id="test2" name="emoji-select">
-                <label for="test2"><img class="emoji-logo-thumb" loading="lazy" title="傻不啦叽诗歌剧" src="./img/shabulaji/1697889409322.png"></label>
+                <input type="radio" class="sticker-rad" id="test2" name="sticker-select">
+                <label for="test2"><img class="sticker-logo-thumb" loading="lazy" title="傻不啦叽诗歌剧" src="./img/shabulaji/1697889409322.png"></label>
 
             </div>
 
@@ -187,26 +187,26 @@
             <!--表情列表-->
             <!--
                 模板
-                $emojiId：表情包id
+                $stickerId：表情包id
                 $description：悬浮提示
                 $id：表情id，用于插入文本
                 $copyright：版权信息
                           
-                <div id="$emojiId">
-                    <img class="emoji-img" title="$description" name="$id" onclick="clickEmoji()" loading="lazy" src="./img/urara/sleepy.png">
-                    <br><span class="emoji-copyright">$copyright</span>
+                <div id="$stickerId">
+                    <img class="sticker-img" title="$description" name="$id" onclick="clicksticker()" loading="lazy" src="./img/urara/sleepy.png">
+                    <br><span class="sticker-copyright">$copyright</span>
                 </div>
 
 
             -->
 
 
-            <div class="emoji-list">
+            <div class="sticker-list">
                 
-                <div id="test1">
-                    <img class="emoji-img" title="困" name="test" onclick="clickEmoji()" loading="lazy" src="./img/urara/sleepy.png">
-                    <br><span class="emoji-copyright">©祭祭</span>
-                </div>
+                <!-- <div id="test1">
+                    <img class="sticker-img" title="困" name="test" onclick="clicksticker()" loading="lazy" src="./img/urara/sleepy.png">
+                    <br><span class="sticker-copyright">©祭祭</span>
+                </div> -->
 
             </div>
         </div>
