@@ -103,6 +103,7 @@ function generate(list) {
     let radListEle = document.getElementsByClassName("sticker-rad-list")[0];
     let stickerListEle = document.getElementsByClassName("sticker-list")[0];
     let radListHtml = "";
+    stickerListEle.innerHTML = "";
 
 
     for (let i = 0; i < list.length; i++) {
@@ -129,6 +130,7 @@ function generate(list) {
         stickerListHtml = stickerListHtml + `<br><span class="sticker-copyright">${stickerObj.description}</span>`;
         l.innerHTML = stickerListHtml;
 
+        
         stickerListEle.appendChild(l);
 
     }
