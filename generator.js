@@ -111,9 +111,9 @@ function generate(list) {
         let stickerImgList = stickerObj.imgList;
 
         if (i == 0) {
-            radListHtml = `<input type="radio" class="sticker-rad" id="${stickerObj.id}" name="sticker-select" checked>\n<label for="${stickerObj.id}"><img class="sticker-logo-thumb" loading="lazy" title="${stickerObj.name}" src="${stickerObj.iconSrc}"></label>`;
+            radListHtml = `<input type="radio" class="sticker-rad" id="${stickerObj.id}" name="sticker-select" onchange="selectStickers()" checked>\n<label for="${stickerObj.id}"><img class="sticker-logo-thumb" loading="lazy" title="${stickerObj.name}" src="${stickerObj.iconSrc}"></label>`;
         } else {
-            radListHtml = radListHtml + `<input type="radio" class="sticker-rad" id="${stickerObj.id}" name="sticker-select">\n<label for="${stickerObj.id}"><img class="sticker-logo-thumb" loading="lazy" title="${stickerObj.name}" src="${stickerObj.iconSrc}"></label>`;
+            radListHtml = radListHtml + `<input type="radio" class="sticker-rad" id="${stickerObj.id}" name="sticker-select" onchange="selectStickers()">\n<label for="${stickerObj.id}"><img class="sticker-logo-thumb" loading="lazy" title="${stickerObj.name}" src="${stickerObj.iconSrc}"></label>`;
         }
 
 
@@ -121,10 +121,11 @@ function generate(list) {
 
         let l = document.createElement("div");
         l.id = "sticker-" + stickerObj.id;
+        l.dataset.id = stickerObj.id;
         let stickerListHtml = "";
 
         for (let i = 0; i < stickerImgList.length; i++) {
-            stickerListHtml = stickerListHtml + `<img class="sticker-img" title="${stickerImgList[i].name}" name="${stickerImgList[i].id}" onclick="clicksticker()" loading="lazy" src="${stickerImgList[i].src}">`
+            stickerListHtml = stickerListHtml + `<img class="sticker-img" title="${stickerImgList[i].name}" data-name="${stickerImgList[i].id}" onclick="clickSticker(event)" loading="lazy" src="${stickerImgList[i].src}">`
         }
 
         stickerListHtml = stickerListHtml + `<br><span class="sticker-copyright">${stickerObj.description}</span>`;

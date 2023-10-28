@@ -9,12 +9,16 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
     <script src="generator.js"></script>
+    
 
     <style>
         /* panel基本样式及动画  */
         .sticker-panel>img {
+            height: 30px;
+            width: 30px;
             background-color: #f0f0f0;
             padding: 5px;
+            margin: 3px;
             outline: #e7e7e7 solid 1px;
             border-radius: 3px;
         }
@@ -137,7 +141,6 @@
         }
 
 
-
         /*版权文本样式*/
         .sticker-copyright {
             position: relative;
@@ -154,14 +157,17 @@
 
 
 
+    <!-- for test -->
+    <textarea name="test-text" id="test-textbox" style="height: 200px;width: 400px;overflow-y: auto;overflow-x: visible;word-break:break-all;"></textarea><br>
+
+
+
     <div class="sticker-panel"><img src="./img/shabulaji/fo'xing.png" height="30" width="30">
 
         <!--选择面板-->
         <div class="sticker-popmenu">
 
             <!--表情包选择-->
-
-
             <!--
                 模板
 
@@ -169,7 +175,7 @@
                 $title：标题
                 $thumImg：图标
 
-                <input type="radio" class="sticker-rad" id="$stickerId" name="sticker-select">
+                <input type="radio" class="sticker-rad" id="$stickerId" name="sticker-select" onclick="selectStickers()">
                 <label for="$stickerId"><img class="sticker-logo-thumb" loading="lazy" title="$title" src="$thumImg"></label>
 
             -->
@@ -185,11 +191,9 @@
                 $copyright：版权信息
                           
                 <div id="$stickerId">
-                    <img class="sticker-img" title="$description" name="$id" onclick="clicksticker()" loading="lazy" src="./img/urara/sleepy.png">
+                    <img class="sticker-img" title="$description" data-name="$id" onclick="clickSticker()" loading="lazy" src="./img/urara/sleepy.png">
                     <br><span class="sticker-copyright">$copyright</span>
                 </div>
-
-
             -->
             <div class="sticker-list">
                 <div style="width: 100%;margin-top: 30px;text-align: center;color: gray;">Nothing.</div>
@@ -201,6 +205,9 @@
 
     <!-- for debug -->
     <script>generate(stickers);</script>
+
+    <script src="click_sticker.js"></script>
+    <script>selectStickers();</script>
 </body>
 
 </html>
